@@ -1,21 +1,24 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './Routes'
+import router from './router/index.js'
 import store from './store/index'
 import vuetify from './plugins/vuetify'
-import * as VueGoogleMaps from 'vue2-google-maps';
-import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
-
-Vue.use(Toast);
-
-Vue.use(VueGoogleMaps, {
-  load: {
-    key: 'AIzaSyB7OXmzfQYua_1LEhRdqsoYzyJOPh9hGLg',
-  },
-});
+import axios from 'axios'
 
 Vue.config.productionTip = false
+
+axios.interceptors.request.use(
+  (config) => {
+    config.headers["Access-Control-Allow-Origin"] = "*";
+    config.headers["Content-type"] = "Application/json";
+    config.headers["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 new Vue({
   vuetify,

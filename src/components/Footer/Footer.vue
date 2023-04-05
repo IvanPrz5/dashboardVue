@@ -1,7 +1,7 @@
 <template>
   <v-footer class="px-0 mt-10" color="transparent">
     <v-row no-gutters>
-      <div>
+      <!-- <div>
         <v-btn
               v-for="link in links"
               :key="link.link"
@@ -12,15 +12,16 @@
           >
             {{ link.text }}
           </v-btn>
-      </div>
+      </div> -->
       <div>
         <v-btn
-                v-for="icon in icons"
-                :key="icon.icon"
-                :href="icon.link"
-                class="mr-1"
-                :color=config.light.textColor
-                icon
+          v-for="icon in icons"
+          :key="icon.icon"
+          :href="icon.link"
+          class="mr-1"
+          :color="config.light.textColor"
+          icon
+          target="_blank"
         >
           <v-icon size="24px">{{ icon.icon }}</v-icon>
         </v-btn>
@@ -30,27 +31,25 @@
 </template>
 
 <script>
-import config from '../../config';
+import config from "../../config";
 
 export default {
-  name: 'Footer',
+  name: "Footer",
 
   data: () => ({
     config,
     icons: [
-      {icon: 'mdi-facebook', link: 'https://twitter.com/flatlogic/'},
-      {icon: 'mdi-twitter', link: 'https://www.facebook.com/flatlogic'},
-      {icon: 'mdi-github', link: 'https://github.com/flatlogic/'},
-
+      { icon: "mdi-facebook", link: "https://twitter.com" },
+      { icon: "mdi-twitter", link: "https://www.facebook.com" },
+      { icon: "mdi-github", link: "https://github.com" },
     ],
-    links: [
+    /* links: [
       {text: 'Flatlogic', link: 'https://flatlogic.com/'},
       {text: 'About Us', link: 'https://flatlogic.com/about'},
       {text: 'Blog', link: 'https://flatlogic.com/blog'},
-    ]
+    ] */
   }),
-}
+};
 </script>
 
-<style src="./Footer.scss" lang="scss"/>
-
+<style src="./Footer.scss" lang="scss" />
