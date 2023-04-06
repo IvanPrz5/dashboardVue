@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-container fluid>
+    <v-container class="container-login" fluid>
       <v-row no-gutters>
         <v-col cols="7" class="main-part d-none d-md-none d-lg-flex">
           <div class="d-flex">
@@ -39,22 +39,26 @@
                               <v-text-field
                                 v-model="email"
                                 :rules="emailRules"
-                                label="Correo Electronico"
+                                placeholder="Email"
                                 outlined
                                 required
                               ></v-text-field>
                               <v-text-field
+                                color="primary"
                                 v-model="password"
-                                :rules="passRules"
-                                type="password"
-                                label="Contraseña"
+                                :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                                :type="show ? 'text' : 'password'"
+                                name="input-10-1"
+                                placeholder="Contraseña"
                                 outlined
-                                required
+                                @click:append="show = !show"
+                                :rules="passwordRules"
                               ></v-text-field>
                             </v-col>
                             <v-col class="d-flex justify-space-between">
                               <v-btn
                                 class="text-capitalize"
+                                x-large
                                 block
                                 color="primary"
                                 @click="loginWithToken"
@@ -70,7 +74,7 @@
                 </v-tabs>
               </div>
             </v-col>
-            <v-col cols="12" class="d-flex justify-center">
+            <!-- <v-col cols="12" class="d-flex justify-center">
               <v-footer>
                 <div class="primary--text">
                   © 2023-2025
@@ -79,7 +83,7 @@
                   >, Todos los derechos reservados.
                 </div>
               </v-footer>
-            </v-col>
+            </v-col> -->
           </v-row>
         </v-col>
       </v-row>
@@ -94,40 +98,35 @@ export default {
   name: "Login",
   data() {
     return {
+      show: false,
       email: "admin@gmail.com",
       emailRules: [
-        (v) => !!v || "Este campo es requerido",
+        (v) => !!v || "Email es requerido",
         (v) => /.+@.+/.test(v) || "E-mail must be valid",
       ],
       password: "adminConstra",
-      passRules: [(v) => !!v || "Este campo es requerido"],
+      passwordRules: [(v) => !!v || "Contraseña requerida"],
     };
   },
   methods: {
-    loginWithToken: function() {
-      /* let formValidated = this.$refs.formLogin.validate();
-      if (formValidated) { */
-      let userCred = {
-        email: this.email,
-        password: this.password,
-      };
-      console.log("antes");
-      axios
-        .post("http://localhost:8090/login", userCred, {})
-        .then((response) => {
-          console.log(response);
-          const headers = response.headers;
-          const bToken = headers.get("Authorization");
-          const token = bToken.replace("Bearer ", "");
-          localStorage.setItem("token", token);
-          this.$router.push("/dashboard");
-        });
-      // }
+    loginWithToken: function () {
+      let formValidated = this.$refs.formLogin.validate();
+      if (formValidated) {
+        let userCred = {
+          email: this.email,
+          password: this.password,
+        };
+        axios
+          .post("http://localhost:8090/login", userCred, {})
+          .then((response) => {
+            const headers = response.headers;
+            const bToken = headers.get("Authorization");
+            const token = bToken.replace("Bearer ", "");
+            localStorage.setItem("token", token);
+            this.$router.push("/dashboard");
+          });
+      }
     },
-    /* login() {
-      window.localStorage.setItem("authenticated", true);
-      this.$router.push("/tables");
-    }, */
   },
 };
 </script>

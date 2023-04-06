@@ -110,7 +110,8 @@ export default {
           ],
         },
         { title: "Typography", icon: "mdi-format-size", link: "/typography" },
-        { title: "Tables", icon: "mdi-grid-large", link: "/tables" },
+        { title: "Prueba Vista", icon: "mdi-format-size", link: "/nomina" },
+        { title: "Clientes", icon: "mdi-grid-large", link: "/tables" },
         /* {
           title: "Notifications",
           icon: "mdi-bell-outline",
@@ -140,8 +141,8 @@ export default {
         { title: "Starred", icon: "mdi-circle-medium", color: "primary" },
         { title: "Background", icon: "mdi-circle-medium", color: "error" }, */
       ],
-      sidebarWidth: 240,
-      sidebarMinWidth: 96,
+      sidebarWidth: 250,
+      sidebarMinWidth: 95,
     };
   },
   computed: {

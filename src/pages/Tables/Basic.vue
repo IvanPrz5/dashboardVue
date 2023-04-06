@@ -11,7 +11,7 @@
               <v-text-field
                 v-model="search"
                 append-icon="mdi-magnify"
-                label="Search"
+                placeholder="Buscar"
                 clearable
                 single-line
                 hide-details

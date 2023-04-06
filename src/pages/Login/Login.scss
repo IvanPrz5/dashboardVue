@@ -27,7 +27,7 @@ body {
         font-weight: 500;
       }
       .v-image {
-        margin-bottom: 32px;
+        margin-bottom: 40px;
       }
     }
 
@@ -38,7 +38,7 @@ body {
     background-color: #F6F7FF;
     overflow-y: auto;
     .login-wrapper {
-      width: 320px;
+      width: 350px;
       height: auto;
       .login-slogan {
         color: #4a4a4a;
@@ -63,3 +63,9 @@ body {
     }
   }
 }
+
+/* @media (max-width: 500px) {
+  .primary--text{
+    display: none;
+  }
+} */

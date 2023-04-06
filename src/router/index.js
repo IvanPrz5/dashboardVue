@@ -6,6 +6,7 @@ import Layout from '@/components/Layout/Layout';
 // Pages
 import Dashboard from '@/pages/Dashboard/Dashboard';
 import Typography from '@/pages/Typography/Typography'
+import Nomina from '@/pages/Nomina/Nomina'
 import Tables from '@/pages/Tables/Basic'
 import Notifications from '@/pages/Notifications/Notifications'
 import Icons from '@/pages/Icons/Icons'
@@ -40,6 +41,11 @@ const routes = [
       path: 'typography',
       name: 'Typography',
       component: Typography,
+    },
+    {
+      path: 'nomina',
+      name: 'Nomina',
+      component: Nomina,
     },
     {
       path: 'tables',

@@ -8,7 +8,7 @@
         <v-icon style="font-size: 28px">mdi-arrow-right</v-icon>
       </template>
     </v-btn>
-    <v-toolbar-title>Vue Material Admin</v-toolbar-title>
+    <v-toolbar-title>Dashboard</v-toolbar-title>
     <v-spacer></v-spacer>
     <Search />
 
